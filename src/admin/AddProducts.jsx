@@ -19,46 +19,44 @@ const AddProducts = () => {
   const navigate = useNavigate();
 
   const addProduct = async e => {
-
-
-
     e.preventDefault();
     setLoading(true);
 
     // ====== add product to the firebase database =========
     try {
-      const docRef = await collection(db, "products");
-
       const storageRef = ref(
         storage,
         `productImages/${Date.now() + enterProductImg.name}`
       );
       const uploadTask = uploadBytesResumable(storageRef, enterProductImg);
 
-      uploadTask.on(
-        () => {
-          toast.error("images not uploaded!");
+      uploadTask.on('state_changed',
+        (snapshot) => {
+          const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          console.log(`Upload progress: ${progress}%`);
         },
-        () => {
-          getDownloadURL(uploadTask.snapshot.ref).then(async downloadURL => {
-            await addDoc(docRef, {
-              productName: enterTitle,
-              shortDesc: enterShortDesc,
-              description: enterDescription,
-              category: enterCategory,
-              price: enterPrice,
-              imgUrl: downloadURL,
-            });
+        (error) => {
+          toast.error(`Error al subir imagen: ${error}`);
+        },
+        async () => {
+          const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+          const docRef = collection(db, "products");
+          await addDoc(docRef, {
+            productName: enterTitle,
+            shortDesc: enterShortDesc,
+            description: enterDescription,
+            category: enterCategory,
+            price: enterPrice,
+            imgUrl: downloadURL,
           });
-        }
-      );
-
+        });
       setLoading(false);
-      toast.success("product successfully added!");
+      toast.success("Producto añadido exitosamente!");
       navigate("/dashboard/all-products");
     } catch (err) {
       setLoading(false);
-      toast.error("product not added!");
+      console.log(err);
+      toast.error("producto no añadido!");
     }
   };
 
@@ -68,26 +66,26 @@ const AddProducts = () => {
         <Row>
           <Col lg="12">
             {loading ? (
-              <h4 className="py-5 ">Loading.......</h4>
+              <h4 className="py-5 ">Cargando...</h4>
             ) : (
               <>
-                <h4 className="mb-5">Add Product</h4>
+                <h4 className="mb-5">Añadir Producto</h4>
                 <Form onSubmit={addProduct}>
                   <FormGroup className="form__group">
-                    <span>Product title</span>
+                    <span>Título del producto</span>
                     <input
                       type="text"
-                      placeholder="Double sofa"
+                      placeholder="E.g. Sofa cama"
                       value={enterTitle}
                       onChange={e => setEnterTitle(e.target.value)}
                       required
                     />
                   </FormGroup>
                   <FormGroup className="form__group">
-                    <span>Short Description</span>
+                    <span>Breve Descripción</span>
                     <input
                       type="text"
-                      placeholder="lorem......"
+                      placeholder="Breve descripción del producto"
                       value={enterShortDesc}
                       onChange={e => setEnterShortDesc(e.target.value)}
                       required
@@ -95,10 +93,10 @@ const AddProducts = () => {
                   </FormGroup>
 
                   <FormGroup className="form__group">
-                    <span>Description</span>
+                    <span>Descripción</span>
                     <input
                       type="text"
-                      placeholder="Description....."
+                      placeholder="Description detallada del producto"
                       value={enterDescription}
                       onChange={e => setEnterDescription(e.target.value)}
                       required
@@ -107,7 +105,7 @@ const AddProducts = () => {
 
                   <div className="d-flex align-items-center justify-content-between gap-5">
                     <FormGroup className="form__group w-50">
-                      <span>Price</span>
+                      <span>Precio</span>
                       <input
                         type="number"
                         placeholder="$100"
@@ -118,24 +116,24 @@ const AddProducts = () => {
                     </FormGroup>
 
                     <FormGroup className="form__group w-50">
-                      <span>Category</span>
+                      <span>Categoría</span>
                       <select
                         className="w-100 p-2"
                         onChange={e => setEnterCategory(e.target.value)}
                       >
-                        <option>Select category</option>
-                        <option value="chair">Chair</option>
-                        <option value="sofa">Sofa</option>
-                        <option value="mobile">Mobile</option>
-                        <option value="watch">Watch</option>
-                        <option value="wireless">Wireless</option>
+                        <option>Selecciona una categoría</option>
+                        <option value="Hidrosembradoras">Hidrosembradoras</option>
+                        <option value="Insumos">Insumos para Hidrosiembra</option>
+                        <option value="Enmienda biotica">Enmienda Biótica</option>
+                        <option value="Control de polvo">Control de polvo</option>
+                        <option value="Floculantes">Floculantes</option>
                       </select>
                     </FormGroup>
                   </div>
 
                   <div>
                     <FormGroup className="form__group ">
-                      <span>Product Image</span>
+                      <span>Imagen del producto</span>
                       <input
                         type="file"
                         onChange={e => setEnterProductImg(e.target.files[0])}
@@ -145,7 +143,7 @@ const AddProducts = () => {
                   </div>
 
                   <button className="buy__btn " type="submit">
-                    Add Product
+                    Añadir producto
                   </button>
                 </Form>
               </>

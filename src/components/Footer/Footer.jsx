@@ -9,7 +9,7 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        <Row>
+        <Row className="d-flex align-items-baseline">
           <Col lg="4" className="mb-4" md="6">
             <div className="logo">
               <div>
@@ -17,30 +17,20 @@ const Footer = () => {
               </div>
             </div>
             <p className="footer__text mt-4">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque
-              dolor labore eveniet vitae nulla itaque soluta sit provident
-              consectetur laboriosam?
+              Llevamos 10 años implementando soluciones ambientales en terrenos afectados por las actividades de grandes proyectos mineros, petroleros y de construcción de infraestructura.
             </p>
           </Col>
 
           <Col lg="3" md="3" className="mb-4">
             <div className="footer__quick-links">
-              <h4 className="quick__links-title">Top Categories</h4>
+              <h4 className="quick__links-title">Hidrosembradoras</h4>
               <ListGroup>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Mobile Phones</Link>
+                  <Link to="#">FINN</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Modern Sofa</Link>
-                </ListGroupItem>
-
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Arm Chair</Link>
-                </ListGroupItem>
-
-                <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Smart Watches</Link>
+                  <Link to="#">VERDETEC</Link>
                 </ListGroupItem>
               </ListGroup>
             </div>
@@ -48,22 +38,22 @@ const Footer = () => {
 
           <Col lg="2" md="3" className="mb-4">
             <div className="footer__quick-links">
-              <h4 className="quick__links-title">Useful Links</h4>
+              <h4 className="quick__links-title">Insumos</h4>
               <ListGroup>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/shop">Shop</Link>
+                  <Link to="/shop">Enmienda biótica</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/cart">Cart</Link>
+                  <Link to="/cart">Control de polvo</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/login">Login</Link>
+                  <Link to="/login">Floculantes</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Privacy Policy</Link>
+                  <Link to="#">Insumos para hidrosiembra</Link>
                 </ListGroupItem>
               </ListGroup>
             </div>
@@ -71,27 +61,20 @@ const Footer = () => {
 
           <Col lg="3" md="4">
             <div className="footer__quick-links">
-              <h4 className="quick__links-title">Contact</h4>
+              <h4 className="quick__links-title">Contacto</h4>
               <ListGroup className="footer__contact">
                 <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                   <span>
-                    <i class="ri-map-pin-line"></i>
+                    <i className="ri-phone-line"></i>
                   </span>
-                  <p>123 ZindaBazar, Sylhet, Bangladesh</p>
+                  <p>+(51) 997 577703</p>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
                   <span>
-                    <i class="ri-phone-line"></i>
+                    <i className="ri-mail-line"></i>
                   </span>
-                  <p>+0881234567890</p>
-                </ListGroupItem>
-
-                <ListGroupItem className="ps-0 border-0 d-flex align-items-center gap-2">
-                  <span>
-                    <i class="ri-mail-line"></i>
-                  </span>
-                  <p>example123@gmail.com</p>
+                  <p>sales@dendro.us</p>
                 </ListGroupItem>
               </ListGroup>
             </div>

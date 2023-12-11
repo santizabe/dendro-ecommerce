@@ -9,8 +9,13 @@ const AllProducts = () => {
   const { data: productsData, loading } = useGetData("products");
 
   const deleteProduct = async id => {
-    await deleteDoc(doc(db, "products", id));
-    toast.success("Deleted!");
+    try {
+      deleteDoc(doc(db, "products", id));
+      toast.success("Eliminado!");
+    }
+    catch {
+      toast.error('Hubo un error!')
+    }
   };
 
   return (
@@ -35,7 +40,7 @@ const AllProducts = () => {
                   productsData.map(item => (
                     <tr key={item.id}>
                       <td>
-                        <img src={item.imgUrl} alt="" />
+                        <img src={item.imgUrl} alt={item.shortDesc} />
                       </td>
                       <td>{item.productName}</td>
                       <td>{item.category}</td>

@@ -107,6 +107,10 @@
   cursor: pointer;
 }
 
+.hover-pointer:hover {
+  cursor: pointer;
+}
+
 .show__profileActions {
   display: block !important;
 }

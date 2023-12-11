@@ -34,9 +34,7 @@ const Signup = () => {
         email,
         password
       );
-
       const user = await userCredential.user;
-
       const storageRef = ref(storage, `images/${Date.now() + username}`);
       const uploadTask = uploadBytesResumable(storageRef, file);
 
@@ -125,7 +123,7 @@ const Signup = () => {
                   </p>
                 </Form>
               </Col>
-              
+
             )}
           </Row>
         </Container>

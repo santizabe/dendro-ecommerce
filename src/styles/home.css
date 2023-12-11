@@ -1,5 +1,5 @@
 .hero__section {
-/*   background: var(--hero-bg); */
+  background: url('../../public/dendro_home_bg.webp');
 }
 
 .hero__content h2 {

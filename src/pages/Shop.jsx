@@ -10,12 +10,12 @@ import ProductsList from "../components/UI/ProductsList";
 import useGetData from "../custom-hooks/useGetData";
 
 const Shop = () => {
-  const { data: products} = useGetData("products");
- 
+  const { data: products } = useGetData("products");
+
 
   return (
-    <Helmet title="Shop">
-      <CommonSection title="Products" />
+    <Helmet title="Tienda">
+      <CommonSection title="Productos" />
 
       <section>
         <Container>
@@ -23,7 +23,7 @@ const Shop = () => {
             <Col lg="3" md="6">
               <div className="filter__widget">
                 <select>
-                  <option>Filter By Category</option>
+                  <option>Filtrar por categoría</option>
                   <option value="sofa">Sofa</option>
                   <option value="mobile">Mobile</option>
                   <option value="chair">Chair</option>
@@ -35,9 +35,9 @@ const Shop = () => {
             <Col lg="3" md="6" className="text-end">
               <div className="filter__widget">
                 <select>
-                  <option>Sort By</option>
-                  <option value="ascending">Ascending</option>
-                  <option value="descending">Descending</option>
+                  <option>Ordenar</option>
+                  <option value="ascending">Ascendente</option>
+                  <option value="descending">Descendente</option>
                 </select>
               </div>
             </Col>
@@ -46,10 +46,10 @@ const Shop = () => {
                 <input
                   type="text"
                   placeholder="Search......"
-                 
+
                 />
                 <span>
-                  <i class="ri-search-line"></i>
+                  <i className="ri-search-line"></i>
                 </span>
               </div>
             </Col>
@@ -61,7 +61,7 @@ const Shop = () => {
         <Container>
           <Row>
             {products.length === 0 ? (
-              <h1 className="text-center fs-4">No products are found!</h1>
+              <h1 className="text-center fs-4">No se encontraron productos!</h1>
             ) : (
               <ProductsList data={products} />
             )}

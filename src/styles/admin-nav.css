@@ -73,3 +73,21 @@
 .admin__menu-active {
   background: whitesmoke;
 }
+
+.profile_actions {
+  position: absolute;
+  width: 150px;
+  z-index: 10;
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  background: var(--card-bg-01);
+  line-height: 30px;
+  display: none;
+  cursor: pointer;
+}
+
+.show__profileActions {
+  display: block !important;
+}

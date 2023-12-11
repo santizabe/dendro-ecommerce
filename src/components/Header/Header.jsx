@@ -1,13 +1,11 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef } from "react";
 
 import { NavLink, useNavigate } from "react-router-dom";
 import "./header.css";
 
 import { motion } from "framer-motion";
 
-
 import AreaVerde from './Assets/AreaVerde.png'
-
 
 import userIcon from "../../assets/images/user-icon.png";
 
@@ -19,87 +17,69 @@ import { signOut } from "firebase/auth";
 import { auth } from "../../firebase.config";
 import { toast } from "react-toastify";
 
+
 const nav__links = [
   {
-    path: "home",
-    display: "Inicio",
+    path: "inicio",
+    display: "inicio",
   },
   {
-    path: "shop",
+    path: "tienda",
     display: "Tienda",
   },
   {
-    path: "cart",
+    path: "carrito",
     display: "Carrito",
   },
   {
-    path: "Nosotros",
+    path: "nosotros",
     display: "Nosotros",
   },
   {
-    path: "Proyectos",
+    path: "proyectos",
     display: "Proyectos Realizados",
   },
   {
-    path: "Consultorias",
+    path: "consultorias",
     display: "Consultorias",
   },
 ];
 
 const Header = () => {
-  const headerRef = useRef(null);
   const totalQuantity = useSelector(state => state.cart.totalQuantity);
   const profileActionRef = useRef(null);
 
   const menuRef = useRef(null);
   const navigate = useNavigate();
-  const { currentUser } = useAuth();
-
-  const stickyHeaderFunc = () => {
-    window.addEventListener("scroll", () => {
-      if (
-        document.body.scrollTop > 80 ||
-        document.documentElement.scrollTop > 80
-      ) {
-        headerRef.current.classList.add("sticky__header");
-      } else {
-        headerRef.current.classList.remove("sticky__header");
-      }
-    });
-  };
+  const currentUser = useAuth();
 
   const logout = () => {
     signOut(auth)
       .then(() => {
         toast.success("Logged out");
-        navigate("/home");
+        navigate("/Inicio");
       })
       .catch(err => {
         toast.error(err.message);
       });
   };
 
-  useEffect(() => {
-    stickyHeaderFunc();
-
-    return () => window.removeEventListener("scroll", stickyHeaderFunc);
-  });
-
   const menuToggle = () => menuRef.current.classList.toggle("active__menu");
 
   const navigateToCart = () => {
-    navigate("/cart");
+    navigate("/carrito");
   };
 
   const toggleProfileActions = () =>
     profileActionRef.current.classList.toggle("show__profileActions");
 
   return (
-    <header className="header" ref={headerRef}>
+    <header className="header">
       <Container>
         <Row>
           <div className="nav__wrapper">
-            <div className="logo">
+            <div className="logo hover-pointer" onClick={() => navigate('/')}
+            >
               <img src={AreaVerde} alt="logo" />
               <div>
                 <h1>Area Verde</h1>
@@ -124,12 +104,8 @@ const Header = () => {
             </div>
 
             <div className="nav__icons">
-              <span className="fav__icon">
-                <i class="ri-heart-line"></i>
-                <span className="badge">2</span>
-              </span>
               <span className="cart__icon" onClick={navigateToCart}>
-                <i class="ri-shopping-bag-line"></i>
+                <i className="ri-shopping-bag-line"></i>
                 <span className="badge">{totalQuantity}</span>
               </span>
 
@@ -151,24 +127,23 @@ const Header = () => {
                   onClick={toggleProfileActions}
                 >
                   {currentUser ? (
-                    <div className="d-flex flex-column ">
-                      <span onClick={logout}>Logout</span>
+                    <div className="d-flex flex-column">
                       <span>
-                        <Link to="/dashboard">Dashboard</Link>
+                        <Link to="/compras">Mis compras</Link>
                       </span>
+                      <span onClick={logout}>Logout</span>
                     </div>
                   ) : (
                     <div className=" d-flex align-items-center justify-content-center flex-column">
                       <Link to="/signup">Registrarse</Link>
                       <Link to="/login">Iniciar sesion</Link>
-                      <Link to="/dashboard">Dashboard</Link>
                     </div>
                   )}
                 </div>
               </div>
               <div className="mobile__menu">
                 <span onClick={menuToggle}>
-                  <i class="ri-menu-line"></i>
+                  <i className="ri-menu-line"></i>
                 </span>
               </div>
             </div>

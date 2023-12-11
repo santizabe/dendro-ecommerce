@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useRef } from "react";
+
 import { Container, Row } from "reactstrap";
+
 import useAuth from "../custom-hooks/useAuth";
-import { NavLink } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase.config";
 
-
+import { toast } from 'react-toastify'
+import { NavLink, useNavigate, Link } from "react-router-dom";
 import "../styles/admin-nav.css";
-
-
+import { motion } from "framer-motion";
+import { setAdmin } from '../redux/slices/adminSlice'
+import AreaVerde from './Assets/AreaVerde.png'
+import userIcon from '../assets/images/user-icon.png'
+import { useDispatch } from "react-redux";
 
 const admin__nav = [
   {
@@ -33,7 +40,25 @@ const admin__nav = [
 ];
 
 const AdminNav = () => {
-  const { currentUser } = useAuth();
+  const currentUser = useAuth();
+  const profileActionRef = useRef(null);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(setAdmin(false));
+    signOut(auth)
+      .then(() => {
+        toast.success("Logged out");
+        navigate("/Inicio");
+      })
+      .catch(err => {
+        toast.error(err.message);
+      });
+  };
+
+  const toggleProfileActions = () =>
+    profileActionRef.current.classList.toggle("show__profileActions");
 
   return (
     <>
@@ -43,24 +68,45 @@ const AdminNav = () => {
             <div className="admin__nav-wrapper-top">
               <div className="logo">
                 <div>
-                  <img src="./Assets/AreaVerde.png" alt="" />
+                  <img src={AreaVerde} alt="Area Verde logo" />
                 </div>
               </div>
 
               <div className="search__box">
                 <input type="text" placeholder="Search...." />
                 <span>
-                  <i class="ri-search-line"></i>
+                  <i className="ri-search-line"></i>
                 </span>
               </div>
               <div className="admin__nav-top-right">
                 <span>
-                  <i class="ri-notification-3-line"></i>
+                  <i className="ri-notification-3-line"></i>
                 </span>
                 <span>
-                  <i class="ri-settings-2-line"></i>
+                  <i className="ri-settings-2-line"></i>
                 </span>
-                <img src={currentUser && currentUser.photoURL} alt="" />
+                <div className="profile">
+                  <motion.img
+                    whileTap={{ scale: 1.2 }}
+                    src={
+                      currentUser && currentUser.photoURL
+                        ? currentUser.photoURL
+                        : userIcon
+                    } alt="user"
+                    onClick={toggleProfileActions}
+                  />
+                  <div className="profile_actions"
+                    ref={profileActionRef}
+                    onClick={toggleProfileActions}
+                  >
+                    <div className="d-flex flex-column">
+                      <span>
+                        <Link to="/dashboard">Dashboard</Link>
+                      </span>
+                      <span onClick={logout}>Logout</span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </Container>
