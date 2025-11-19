@@ -3,6 +3,7 @@ import "./footer.css";
 
 import { Container, Row, Col, ListGroup, ListGroupItem } from "reactstrap";
 import { Link } from "react-router-dom";
+import { socialNetworks } from "../../assets/data/socials"
 
 const Footer = () => {
   const year = new Date().getFullYear();
@@ -16,7 +17,7 @@ const Footer = () => {
                 <h1 className="text-white">Dendro</h1>
               </div>
             </div>
-            <p className="footer__text mt-4">
+            <p className="footer__text mt-1">
               Llevamos 10 años implementando soluciones ambientales en terrenos afectados por las actividades de grandes proyectos mineros, petroleros y de construcción de infraestructura.
             </p>
           </Col>
@@ -41,19 +42,19 @@ const Footer = () => {
               <h4 className="quick__links-title">Insumos</h4>
               <ListGroup>
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/shop">Enmienda biótica</Link>
+                  <Link to="/tienda">Enmienda biótica</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/cart">Control de polvo</Link>
+                  <Link to="/tienda">Control de polvo</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="/login">Floculantes</Link>
+                  <Link to="/tienda">Floculantes</Link>
                 </ListGroupItem>
 
                 <ListGroupItem className="ps-0 border-0">
-                  <Link to="#">Insumos para hidrosiembra</Link>
+                  <Link to="/tienda">Insumos para hidrosiembra</Link>
                 </ListGroupItem>
               </ListGroup>
             </div>
@@ -79,10 +80,29 @@ const Footer = () => {
               </ListGroup>
             </div>
           </Col>
+          <Col lg="12">
+            <div className="d-flex justify-content-evenly socials-container">
 
+              {socialNetworks.map((social) => (
+                <span
+                key={social.name}
+                aria-label={social.name}
+                className="social-icon d-flex align-items-center justify-content-center"
+                >
+                    <a href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    {social.icon}
+                    </a>
+                </span>
+              ))}
+            </div>
+          </Col>
           <Col lg="12">
             <p className="footer__copyright">
-              Copyright {year} developed by Julian Vera. All rights reserved.
+              Copyright {year} developed by
+              <a href="https://github.com/santizabe"> Santiago Zapata</a>
+              . All rights reserved.
             </p>
           </Col>
         </Row>

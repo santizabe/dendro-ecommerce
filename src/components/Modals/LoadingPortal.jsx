@@ -5,7 +5,7 @@ import '../../styles/loading-portal.css';
 function LoadingPortal() {
     return ReactDOM.createPortal(
         <div className="loading-overlay">
-            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+            <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
         </div>,
         document.body);
 }

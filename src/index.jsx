@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
-import store from "./redux/store";
+import store from "./redux/store.jsx";
 import { Provider } from "react-redux";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,12 +15,12 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <PayPalScriptProvider
+      {/* <PayPalScriptProvider
         options={{
           "client-id":
             "AeKLtF6av2ycflZw7V_9hI6yV9sP7K0XQN6gETt7avFKD7zVNgBA3QVPd7Vw9i5PKqmKyZdSqKJWJX_o",
         }}
-      >
+      > */}
         <Provider store={store}>
           <ToastContainer
             theme="dark"
@@ -32,7 +32,7 @@ root.render(
 
           <App />
         </Provider>
-      </PayPalScriptProvider>
+      {/* </PayPalScriptProvider> */}
     </BrowserRouter>
   </React.StrictMode>
 );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import  { useEffect, useState } from "react";
 import Helmet from "../components/Helmet/Helmet";
 import LoadingPortal from '../components/Modals/LoadingPortal'
 import { Container, Row, Col, Form, FormGroup } from "reactstrap";
@@ -42,8 +42,10 @@ const Login = () => {
       }
     }
     if (isAdmin)
+    {
       setLoading(false);
-    navigate("/dashboard");
+      navigate("/dashboard");
+    }
     if (userInfo !== null) {
       checkAdmin(userInfo.uid);
     }

@@ -94,7 +94,7 @@ const Tr = ({ item }) => {
         <motion.i
           whileTap={{ scale: 1.2 }}
           onClick={deleteProduct}
-          class="ri-delete-bin-line"
+          className="ri-delete-bin-line"
         ></motion.i>
       </td>
     </tr>
