@@ -52,11 +52,11 @@ const Signup = () => {
           <Row>
             {loading ? (
               <Col lg="12" className="text-center">
-                <h5 className="fw-bold">Loading.....</h5>
+                <h5 className="fw-bold">cargando.....</h5>
               </Col>
             ) : (
               <Col lg="6" className="m-auto text-center">
-                <h3 className="fw-bold mb-4">Signup</h3>
+                <h3 className="fw-bold mb-4">Regístrate</h3>
 
                 <Form className="auth__form" onSubmit={signup}>
                   <FormGroup className="form__group">
@@ -85,10 +85,10 @@ const Signup = () => {
                   </FormGroup>
 
                   <button type="submit" className="buy__btn auth__btn">
-                    Create an Account
+                    Crear cuenta
                   </button>
                   <p>
-                    Already have an account? <Link to="/login">Login</Link>
+                    Ya estás registrado? <Link to="/login">Ingresa</Link>
                   </p>
                 </Form>
               </Col>

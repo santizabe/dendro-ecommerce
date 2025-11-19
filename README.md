@@ -1,70 +1,153 @@
-# Getting Started with Create React App
+# Dendro SAC - E-commerce Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 📋 Descripción del Proyecto
 
-## Available Scripts
+Dendro SAC es una plataforma de comercio electrónico especializada en soluciones ambientales y paisajísticas. La empresa es líder en hidrosiembra, revegetación, reforestación y control de erosión, ofreciendo productos especializados para el sector ambiental y de construcción.
 
-In the project directory, you can run:
+## 🌱 Sobre Dendro SAC
 
-### `npm start`
+Dendro SAC es una empresa experta en:
+- **Hidrosiembra**: Técnicas avanzadas de siembra por aspersión
+- **Revegetación**: Recuperación de áreas degradadas
+- **Reforestación**: Plantación de especies nativas
+- **Control de Erosión**: Soluciones para estabilización de suelos
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 🛠️ Tecnologías Utilizadas
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Frontend
+- **React** - Biblioteca principal para la interfaz de usuario
+- **React Router DOM** - Navegación y enrutamiento
+- **Reactstrap** - Componentes de Bootstrap para React
+- **Framer Motion** - Animaciones y transiciones
+- **Remix Icon** - Iconografía
 
-### `npm test`
+### Backend & Database
+- **Firebase Authentication** - Sistema de autenticación de usuarios
+- **Firebase Firestore** - Base de datos NoSQL en tiempo real
+- **Firebase Storage** - Almacenamiento de archivos e imágenes
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Estado y Notificaciones
+- **React Redux** - Manejo del estado global
+- **React Toastify** - Notificaciones toast
 
-### `npm run build`
+### Build Tool
+- **Vite** - Herramienta de construcción y desarrollo rápido
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🚀 Instalación y Configuración
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Prerrequisitos
+```bash
+Node.js >= 14.0.0
+npm o yarn
+```
 
-### `npm run eject`
+### Instalación
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. Clonar el repositorio
+```bash
+git clone [url-del-repositorio]
+cd dendro-ecommerce
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. Instalar dependencias
+```bash
+npm install
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. Configurar variables de entorno
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Crear un archivo `.env` en la raíz del proyecto:
+```env
+VITE_FIREBASE_API_KEY=tu_api_key
+VITE_FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com
+VITE_FIREBASE_PROJECT_ID=tu_project_id
+VITE_FIREBASE_STORAGE_BUCKET=tu_proyecto.appspot.com
+VITE_FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
+VITE_FIREBASE_APP_ID=tu_app_id
+```
 
-## Learn More
+4. Iniciar el servidor de desarrollo
+```bash
+npm run dev
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## 🔧 Configuración de Firebase
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### 1. Crear un proyecto en Firebase Console
+- Ve a [Firebase Console](https://console.firebase.google.com/)
+- Crea un nuevo proyecto
+- Obtén las credenciales de configuración
 
-### Code Splitting
+### 2. Habilitar servicios
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**Authentication:**
+- Ve a Authentication → Get Started
+- Habilita Email/Password como método de inicio de sesión
 
-### Analyzing the Bundle Size
+**Firestore Database:**
+- Ve a Firestore Database → Create Database
+- Configura las reglas de seguridad según tus necesidades
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+**Storage:**
+- Ve a Storage → Get Started
+- Configura las reglas de seguridad para almacenamiento de archivos
 
-### Making a Progressive Web App
+## 📂 Estructura del Proyecto
+```
+dendro-ecommerce/
+├── src/
+│   ├── assets/          # Imágenes y recursos estáticos
+│   ├── components/      # Componentes reutilizables
+│   │   ├── Header/
+│   │   ├── Footer/
+│   │   ├── Helmet/
+│   │   └── Layout/
+│   ├── pages/           # Páginas de la aplicación
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Signup.jsx
+│   │   └── Shop.jsx
+│   ├── services/        # Servicios y lógica de negocio
+│   ├── data/            # Datos estáticos y constantes
+│   │   └── socials.jsx
+│   ├── styles/          # Archivos CSS
+│   ├── firebase.config.jsx  # Configuración de Firebase
+│   └── App.jsx          # Componente principal
+├── .env                 # Variables de entorno
+├── package.json
+└── vite.config.js
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 🔐 Características de Autenticación
 
-### Advanced Configuration
+### Registro de Usuarios
+- Registro con email y contraseña
+- Almacenamiento de perfil de usuario en Firestore
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+### Inicio de Sesión
+- Autenticación segura con Firebase
+- Manejo de sesiones
+- Redirección automática después del login
 
-### Deployment
+## 🎨 Características de UI/UX
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- Diseño responsive (mobile-first)
+- Animaciones suaves con Framer Motion
+- Notificaciones toast para feedback del usuario
+- Navegación intuitiva
+- Iconografía moderna con Remix Icon
 
-### `npm run build` fails to minify
+## 🚢 Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### Build de producción
+```bash
+npm run build
+```
+
+Los archivos optimizados se generarán en la carpeta `dist/`
+
+### Preview del build
+```bash
+npm run preview
+```

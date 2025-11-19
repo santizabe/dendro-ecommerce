@@ -1,3 +1,4 @@
+import React from "react";
 import  { useState } from 'react';
 import '../styles/proyectos.css'
 import consultorias from '../assets/data/consultorias'

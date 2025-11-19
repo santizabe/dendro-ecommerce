@@ -18,7 +18,7 @@ const Cart = () => {
 
   return (
     <Helmet title="Cart">
-      <CommonSection title="Shopping Cart" />
+      <CommonSection title="Carrito" />
       <section>
         <Container>
           <Row>
@@ -29,14 +29,11 @@ const Cart = () => {
                 <table className="table bordered">
                   <thead>
                     <tr>
-                      <th>Image</th>
-                      <th>Title</th>
-                      <th>Price</th>
-                      <th>Qty</th>
-                      <th>Delete</th>
-
-
-                      
+                      <th>Imagen</th>
+                      <th>Título</th>
+                      <th>Precio</th>
+                      <th>Unidades</th>
+                      <th>Borrar</th>
                     </tr>
                   </thead>
 
@@ -57,14 +54,14 @@ const Cart = () => {
                 </h6>
               </div>
               <p className="fs-6 mt-2">
-                taxes and shipping will calculate in checkout
+                Impuestos y tarifas de envío se calculan durante el checkout.
               </p>
               <div>
                 <button className="buy__btn w-100 ">
                   <Link to="/checkout">Checkout</Link>
                 </button>
                 <button className="buy__btn w-100 mt-3">
-                  <Link to="/shop">Continue Shopping</Link>
+                  <Link to="/shop">Volver a la tienda</Link>
                 </button>
               </div>
             </Col>
@@ -85,7 +82,7 @@ const Tr = ({ item }) => {
   return (
     <tr>
       <td>
-        <img src={item.imgUrl} alt="" />
+        <img src="/dendro_logo.jpg" alt="item description" />
       </td>
       <td>{item.productName}</td>
       <td>${item.price}</td>
